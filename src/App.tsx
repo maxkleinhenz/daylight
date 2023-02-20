@@ -4,7 +4,7 @@ import { usePosition } from "./hooks/usePosition";
 import { useSunTimes } from "./hooks/useSunTimes";
 
 function App() {
-  const now = new Date(2022, 2, 20, 12, 45);
+  const now = new Date();
 
   const { position, error, city } = usePosition();
   const { sunTimes, sunPosition } = useSunTimes(now, position?.coords);
