@@ -4,19 +4,17 @@ import { usePosition } from "./hooks/usePosition";
 import { useSunTimes } from "./hooks/useSunTimes";
 
 function App() {
-  const now = new Date();
+  const now = new Date(2022, 2, 20, 12, 45);
 
   const { position, error, city } = usePosition();
   const { sunTimes, sunPosition } = useSunTimes(now, position?.coords);
 
-  console.log(error);
-
   return (
-    <div className="flex h-full flex-col items-center">
+    <div className="h-full flex-col items-center">
       <GeolocationErrorAlert error={error} />
 
-      <div className="flex w-full max-w-[600px] flex-1 flex-col px-8 py-8">
-        <div className="relative w-full flex-1 border-b-2 border-darker">
+      <div className="mx-auto flex h-full w-full max-w-[700px] flex-col justify-end px-8 py-8">
+        <div className="relative max-h-[600px] w-full flex-1 border-b-2 border-darker">
           {sunPosition.isVisible && (
             <div
               className="absolute h-4 w-4 rounded-full bg-darker"
