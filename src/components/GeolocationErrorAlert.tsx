@@ -14,17 +14,15 @@ function GeolocationErrorAlert({ error }: Props) {
 
   if (error.code === 1) {
     title = "Please enable location access";
-    text =
-      "On order to see your daylight information, please enable location access for this website";
+    text = "On order to see your daylight information, please enable location access for this website";
   } else {
     title = "Your location could not be retrieved";
-    text =
-      "Something went wrong while retrieving your location information. Please try again.";
+    text = "Something went wrong while retrieving your location information. Please try again.";
   }
 
   return (
     <div
-      className=" absolute top-12 mb-4 flex items-center gap-2 rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
+      className="absolute top-12 z-10 mb-4 flex items-center gap-2 rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800 dark:border-red-800 dark:bg-gray-800 dark:text-red-400"
       role="alert"
     >
       <FaInfoCircle />

@@ -1,12 +1,9 @@
-import { differenceInMinutes } from "date-fns";
+import { addDays, differenceInMinutes, subDays } from "date-fns";
 import { useEffect, useState } from "react";
 import SunCalc from "suncalc";
 
-export const useSunTimes = (
-  now: Date,
-  coords: GeolocationCoordinates | undefined
-) => {
-  const [sunTimes, setSunTimes] = useState<SunCalc.GetTimesResult>();
+export const useSunTimes = (now: Date, coords: GeolocationCoordinates | undefined) => {
+  const [sunTimes, setSunTimes] = useState<SunTimes>();
   const [sunPosition, setSunPosition] = useState<SunPostion>({
     isVisible: false,
     x: 0,
@@ -22,22 +19,23 @@ export const useSunTimes = (
         y: 0,
       });
     } else {
-      const sunTimes = SunCalc.getTimes(now, coords.latitude, coords.longitude);
-      setSunTimes(sunTimes);
+      const todaySunTimes = SunCalc.getTimes(now, coords.latitude, coords.longitude);
+      const yesterdaySunTimes = SunCalc.getTimes(subDays(now, 1), coords.latitude, coords.longitude);
+      const tomorrowSunTimes = SunCalc.getTimes(addDays(now, 1), coords.latitude, coords.longitude);
+      setSunTimes({
+        todayTimes: todaySunTimes,
+        yesterdayTimes: yesterdaySunTimes,
+        tomorrowSunTimes: tomorrowSunTimes,
+      });
 
       const sunProgress =
-        differenceInMinutes(now, sunTimes.sunrise) /
-        differenceInMinutes(sunTimes.sunset, sunTimes.sunrise);
+        differenceInMinutes(now, todaySunTimes.sunrise) /
+        differenceInMinutes(todaySunTimes.sunset, todaySunTimes.sunrise);
 
-      const altitude = SunCalc.getPosition(
-        now,
-        coords.latitude,
-        coords.longitude
-      ).altitude;
+      const altitude = SunCalc.getPosition(now, coords.latitude, coords.longitude).altitude;
       const posY = altitude / (Math.PI / 2);
       setSunPosition({
-        isVisible:
-          sunProgress >= 0 && sunProgress <= 1 && posY >= 0 && posY <= 1,
+        isVisible: sunProgress >= 0 && sunProgress <= 1 && posY >= 0 && posY <= 1,
         x: sunProgress,
         y: posY,
       });
@@ -45,6 +43,12 @@ export const useSunTimes = (
   }, [coords]);
 
   return { sunTimes, sunPosition };
+};
+
+export type SunTimes = {
+  todayTimes: SunCalc.GetTimesResult;
+  yesterdayTimes: SunCalc.GetTimesResult;
+  tomorrowSunTimes: SunCalc.GetTimesResult;
 };
 
 export type SunPostion = {
