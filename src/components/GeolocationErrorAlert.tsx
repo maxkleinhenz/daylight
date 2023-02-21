@@ -14,7 +14,7 @@ function GeolocationErrorAlert({ error }: Props) {
 
   if (error.code === 1) {
     title = "Please enable location access";
-    text = "On order to see your daylight information, please enable location access for this website";
+    text = "In order to see your daylight information, please enable location access for this website";
   } else {
     title = "Your location could not be retrieved";
     text = "Something went wrong while retrieving your location information. Please try again.";
