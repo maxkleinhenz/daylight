@@ -1,19 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FaLocationArrow } from "react-icons/fa";
-import { City } from "../hooks/usePosition";
+import { City, GeoError } from "../hooks/usePosition";
 
 type Props = {
-  city: City;
+  city?: City;
 };
 
 function CityDisplay({ city }: Props) {
   return (
-    <div className="flex items-center gap-3 pt-3 font-semibold text-darker">
+    <div className="flex items-center gap-3 pt-3 font-semibold text-primary">
       <FaLocationArrow className="shrink-0 text-sm" />
-      {city.state == "Ok" && <p>{city?.fullname}</p>}
-      {city.state == "Loading" && <>Loading...</>}
-      {city.state == "Error" && <>Error</>}
+      {!city && <p>Loading...</p>}
+      {city?.error && <p>Error</p>}
+      {city?.fullname && <p>{city?.fullname}</p>}
     </div>
   );
 }

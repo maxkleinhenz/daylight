@@ -3,22 +3,25 @@ import DaylightChangeMessage from "./components/DaylightChangeMessage";
 import GeolocationErrorAlert from "./components/GeolocationErrorAlert";
 import { usePosition } from "./hooks/usePosition";
 import { useSunTimes } from "./hooks/useSunTimes";
+import { setTheme } from "./utils/themeUtils";
 
 function App() {
-  //const now = new Date(2023, 2, 21, 12, 0);
+  //const now = new Date(2023, 2, 21, 12, 16);
   const now = new Date();
 
-  const { position, error, city } = usePosition();
+  const { position, city } = usePosition();
   const { sunTimes, sunPosition } = useSunTimes(now, position?.coords);
+
+  setTheme(now, sunTimes);
 
   return (
     <div className="flex h-full flex-col items-center">
-      <GeolocationErrorAlert error={error} />
+      <GeolocationErrorAlert error={city?.error} />
       <div className="flex h-full w-full max-w-[700px] flex-col justify-end px-8 py-8">
-        <div className="relative max-h-[600px] w-full flex-1 border-b-2 border-darker">
+        <div className="relative max-h-[600px] w-full flex-1 border-b-2 border-primary">
           {sunPosition.isVisible && (
             <div
-              className="absolute h-4 w-4 rounded-full bg-darker"
+              className="absolute h-4 w-4 rounded-full bg-primary"
               style={{
                 left: `${sunPosition.x * 100}%`,
                 bottom: `${sunPosition.y * 100}%`,
@@ -27,7 +30,7 @@ function App() {
           )}
         </div>
         <div className="w-full flex-col items-center px-2 py-1">
-          <div className="flex w-full justify-between text-sm font-semibold text-darker">
+          <div className="flex w-full justify-between text-sm font-semibold text-primary">
             {sunTimes ? (
               <>
                 <div>

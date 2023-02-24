@@ -14,7 +14,7 @@ function getMessage(messageForTomorrow: boolean, minutes: number) {
         minutes: [
           <p>
             Today is{" "}
-            <span className="font-semibold text-darker">
+            <span className="font-semibold">
               {minutes} {Math.abs(minutes) === 1 ? "minute" : "minutes"} longer
             </span>
             . Enjoy the day.
@@ -37,7 +37,7 @@ function getMessage(messageForTomorrow: boolean, minutes: number) {
         minutes: [
           <p>
             Have a good night's sleep. Tomorrow is{" "}
-            <span className="font-semibold text-darker">
+            <span className="font-semibold">
               {minutes} {Math.abs(minutes) === 1 ? "minute" : "minutes"} longer
             </span>
             .
@@ -85,7 +85,7 @@ function DaylightChangeMessage({ now, sunTimes }: Props) {
 
   const message = getMessage(messageForTomorrow, minutes);
 
-  return <div className="py-4 text-3xl text-darker">{message}</div>;
+  return <div className="py-4 text-3xl text-primary">{message}</div>;
 }
 
 export default DaylightChangeMessage;
