@@ -35,7 +35,7 @@ export const useSunTimes = (now: Date, coords: GeolocationCoordinates | undefine
       const altitude = SunCalc.getPosition(now, coords.latitude, coords.longitude).altitude;
       const posY = altitude / (Math.PI / 2);
       setSunPosition({
-        isVisible: sunProgress >= 0 && sunProgress <= 1 && posY >= 0 && posY <= 1,
+        isVisible: sunProgress >= 0 && sunProgress <= 1,
         x: sunProgress,
         y: posY,
       });
