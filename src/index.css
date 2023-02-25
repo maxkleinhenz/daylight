@@ -28,9 +28,19 @@
     height: 100svh;
   }
 
+  .sunrise {
+    --color-sunlight: #ffd9bd;
+    --color-primary: #983c25;
+  }
+
   .daylight {
     --color-sunlight: #fef0ca;
     --color-primary: #a77355;
+  }
+
+  .sunset {
+    --color-sunlight: #ffbaba;
+    --color-primary: #2f4858;
   }
 
   .twilight {
