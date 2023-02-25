@@ -6,8 +6,8 @@ import { useSunTimes } from "./hooks/useSunTimes";
 import { setTheme } from "./utils/themeUtils";
 
 function App() {
-  const now = new Date(2023, 2, 21, 18, 20);
-  //const now = new Date();
+  //const now = new Date(2023, 2, 21, 18, 20);
+  const now = new Date();
 
   const { position, city } = usePosition();
   const { sunTimes, sunPosition } = useSunTimes(now, position?.coords);
