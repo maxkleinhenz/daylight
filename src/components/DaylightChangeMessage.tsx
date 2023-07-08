@@ -15,7 +15,7 @@ function getMessage(messageForTomorrow: boolean, minutes: number) {
           <p>
             Today is{" "}
             <span className="font-semibold">
-              {minutes} {Math.abs(minutes) === 1 ? "minute" : "minutes"} longer
+              {Math.abs(minutes)} {Math.abs(minutes) === 1 ? "minute" : "minutes"} longer
             </span>
             . Enjoy the day.
           </p>,
@@ -25,7 +25,7 @@ function getMessage(messageForTomorrow: boolean, minutes: number) {
       negative: {
         minutes: [
           <p>
-            Unfortunately the day is {minutes} {Math.abs(minutes) === 1 ? "minute" : "minutes"} shorter. It’ll get
+            Unfortunately the day is {Math.abs(minutes)} {Math.abs(minutes) === 1 ? "minute" : "minutes"} shorter. It’ll get
             better!
           </p>,
         ],
@@ -38,7 +38,7 @@ function getMessage(messageForTomorrow: boolean, minutes: number) {
           <p>
             Have a good night's sleep. Tomorrow is{" "}
             <span className="font-semibold">
-              {minutes} {Math.abs(minutes) === 1 ? "minute" : "minutes"} longer
+              {Math.abs(minutes)} {Math.abs(minutes) === 1 ? "minute" : "minutes"} longer
             </span>
             .
           </p>,
@@ -48,7 +48,7 @@ function getMessage(messageForTomorrow: boolean, minutes: number) {
       negative: {
         minutes: [
           <p>
-            Unfortunately tomorrow is {minutes} {Math.abs(minutes) === 1 ? "minute" : "minutes"} shorter than today.
+            Unfortunately tomorrow is {Math.abs(minutes)} {Math.abs(minutes) === 1 ? "minute" : "minutes"} shorter than today.
             It’ll get better!
           </p>,
         ],
