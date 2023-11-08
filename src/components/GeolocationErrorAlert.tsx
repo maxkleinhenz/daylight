@@ -1,4 +1,3 @@
-import React from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { GeoError } from "../hooks/usePosition";
 

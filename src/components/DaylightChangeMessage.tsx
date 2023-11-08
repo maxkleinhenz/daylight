@@ -1,5 +1,4 @@
 import { differenceInMinutes } from "date-fns";
-import React from "react";
 import { SunTimes } from "../hooks/useSunTimes";
 
 export type Props = {

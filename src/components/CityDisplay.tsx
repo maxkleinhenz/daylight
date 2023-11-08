@@ -1,7 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
 import { FaLocationArrow } from "react-icons/fa";
-import { City, GeoError } from "../hooks/usePosition";
+import { City } from "../hooks/usePosition";
 
 type Props = {
   city?: City;
